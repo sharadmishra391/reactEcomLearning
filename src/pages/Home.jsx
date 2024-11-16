@@ -36,6 +36,7 @@ const Home = () => {
         category: categ,
         description: desc,
         image: myimg,
+        qnty: 1,
       })
     );
   };

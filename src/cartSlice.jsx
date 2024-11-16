@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { message } from "antd";
 const cartSlice = createSlice({
   name: "mycart",
   initialState: {
@@ -6,10 +7,23 @@ const cartSlice = createSlice({
   },
   reducers: {
     addToCart: (state, actions) => {
-      state.cart.push(actions.payload);
+      const myData = state.cart.filter((key) => key.id == actions.payload.id);
+      if (myData.length >= 1) {
+        message.error("This product Aleready Added!");
+      } else {
+        state.cart.push(actions.payload);
+        message.success("Product Added!");
+      }
+    },
+
+    qntyInc: (state, actions) => {
+      for (var i = 0; i < state.cart.length; i++) {
+        if (state.cart[i].id == actions.payload.id) {
+          state.cart[i].qnty++;
+        }
+      }
     },
   },
 });
-
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, qntyInc } = cartSlice.actions;
 export default cartSlice.reducer;
