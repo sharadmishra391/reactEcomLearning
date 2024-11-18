@@ -5,9 +5,9 @@ import Navbar from "react-bootstrap/Navbar";
 const Topmenu = () => {
   return (
     <>
-      <Navbar bg="primary" data-bs-theme="dark">
+      <Navbar bg="warning" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">OnlineShopping</Navbar.Brand>
+          <Navbar.Brand href="#home">Watch Store</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={Link} to="home">
               Home
@@ -16,13 +16,13 @@ const Topmenu = () => {
               Shop
             </Nav.Link>
             <Nav.Link as={Link} to="menswear">
-              Mens Collection
+              Mens Watch
             </Nav.Link>
             <Nav.Link as={Link} to="womenwear">
-              Womens Collection
+              Womens Watch
             </Nav.Link>
             <Nav.Link as={Link} to="kidswear">
-              Kids Collection
+              Kids Watch
             </Nav.Link>
             <Nav.Link as={Link} to="cart">
               Cart
