@@ -41,3 +41,19 @@ h1
     background-color: rgb(241, 242, 150);
     border-radius: 50%;
 }
+#shoppage
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+#shopmenu
+{
+    width: 20%;
+    background-color: rgb(226, 240, 244);
+    height: 300px;
+}
+#shopdata
+{
+    width: 80%;
+}

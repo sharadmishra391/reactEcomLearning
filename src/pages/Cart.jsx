@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Table from "react-bootstrap/Table";
 import { FaPlusCircle } from "react-icons/fa";
 import { FaCircleMinus } from "react-icons/fa6";
-import { qntyInc } from "../cartSlice";
+import { qntyInc, qntyDec, itemRemove } from "../cartSlice";
 const Cart = () => {
   const MyCart = useSelector((state) => state.mycart.cart);
   const dispatch = useDispatch();
@@ -11,7 +11,17 @@ const Cart = () => {
     dispatch(qntyInc({ id: id }));
   };
 
+  const qtyDecrement = (id) => {
+    dispatch(qntyDec({ id: id }));
+  };
+
+  const removeItem = (id) => {
+    dispatch(itemRemove({ id: id }));
+  };
+
+  let totalAmount = 0;
   const Data = MyCart.map((key) => {
+    totalAmount += key.price * key.qnty;
     return (
       <>
         <tr>
@@ -24,7 +34,14 @@ const Cart = () => {
           <td>{key.category}</td>
           <td> {key.price}</td>
           <td>
-            <FaCircleMinus />
+            <a
+              href="#"
+              onClick={() => {
+                qtyDecrement(key.id);
+              }}
+            >
+              <FaCircleMinus />
+            </a>
 
             <span
               style={{
@@ -46,6 +63,17 @@ const Cart = () => {
             </a>
           </td>
           <td> {key.price * key.qnty} </td>
+
+          <td>
+            <button
+              onClick={() => {
+                removeItem(key.id);
+              }}
+            >
+              {" "}
+              Remove
+            </button>
+          </td>
         </tr>
       </>
     );
@@ -63,9 +91,22 @@ const Cart = () => {
             <th> Price</th>
             <th> Quantity</th>
             <th> Total</th>
+            <th> </th>
           </tr>
         </thead>
-        <tbody>{Data}</tbody>
+        <tbody>
+          {Data}
+          <tr>
+            <th>#</th>
+            <th> </th>
+            <th> </th>
+            <th> </th>
+            <th> </th>
+            <th> Total Amount: </th>
+            <th> {totalAmount} </th>
+            <th> </th>
+          </tr>
+        </tbody>
       </Table>
     </>
   );
