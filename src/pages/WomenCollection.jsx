@@ -1,20 +1,18 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Carousel from "react-bootstrap/Carousel";
-
-import ban1 from "../images/b1.jpg";
-import ban2 from "../images/b2.jpg";
-import ban3 from "../images/b3.jpg";
 
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 import { useDispatch } from "react-redux";
 import { addToCart } from "../cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const WomenCollection = () => {
   const [mydata, setMydata] = useState([]);
   const dispatch = useDispatch();
+    const navigate = useNavigate();
+
 
   const loadData = () => {
     let api = "http://localhost:3000/shopping/?category=women";
@@ -41,11 +39,23 @@ const WomenCollection = () => {
     );
   };
 
+   const goto_pro_detail = (id) => {
+     navigate(`/prodetail/${id}`);
+   };
+
+
   const ans = mydata.map((key) => {
     return (
       <>
         <Card style={{ width: "380px", marginTop: "10px" }}>
-          <img src={key.image} style={{ height: "300px" }} />
+          <a
+            href="#"
+            onClick={() => {
+              goto_pro_detail(key.id);
+            }}
+          >
+            <img src={key.image} style={{ height: "300px" }} />
+          </a>
           <Card.Body>
             <Card.Title>
               {" "}
