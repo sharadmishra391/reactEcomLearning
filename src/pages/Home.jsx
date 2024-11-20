@@ -11,10 +11,11 @@ import Card from "react-bootstrap/Card";
 
 import { useDispatch } from "react-redux";
 import { addToCart } from "../cartSlice";
-
+import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [mydata, setMydata] = useState([]);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const loadData = () => {
     let api = "http://localhost:3000/shopping";
@@ -41,11 +42,23 @@ const Home = () => {
     );
   };
 
+  const goto_pro_detail = (id) => {
+    navigate(`/prodetail/${id}`);
+  };
+
+
   const ans = mydata.map((key) => {
     return (
       <>
         <Card style={{ width: "380px", marginTop: "10px" }}>
-          <img src={key.image} style={{ height: "300px" }} />
+          <a
+            href="#"
+            onClick={() => {
+              goto_pro_detail(key.id);
+            }}
+          >
+            <img src={key.image} style={{ height: "300px" }} />
+          </a>
           <Card.Body>
             <Card.Title>
               {" "}
@@ -55,7 +68,7 @@ const Home = () => {
               {key.description}
               <br />
               <span style={{ color: "red", fontWeight: "bold" }}>
-                Price : {key.price}
+                Price : Rs. {key.price}/-
               </span>
             </Card.Text>
             <Button

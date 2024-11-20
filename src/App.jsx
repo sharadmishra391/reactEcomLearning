@@ -6,6 +6,7 @@ import MenCollection from "./pages/MenCollection";
 import WomenCollection from "./pages/WomenCollection";
 import KidsCollection from "./pages/KidsCollection";
 import Shop from "./pages/Shop";
+import ProductDetail from "./pages/ProductDetail";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
             <Route path="womenwear" element={<WomenCollection />} />
             <Route path="kidswear" element={<KidsCollection />} />
             <Route path="shop" element={<Shop />} />
+            <Route path="prodetail/:id" element={<ProductDetail />} />
           </Route>
         </Routes>
       </BrowserRouter>

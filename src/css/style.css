@@ -57,3 +57,20 @@ h1
 {
     width: 80%;
 }
+#pro_deatil
+{
+    width: 70%;
+    display: flex;
+    justify-content:center;
+    margin: auto;
+  
+}
+#pro_img
+{
+    width: 30%;
+}
+#pro_desc
+{
+   padding-right: 30px;
+    width: 70%
+}
