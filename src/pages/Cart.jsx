@@ -3,9 +3,11 @@ import Table from "react-bootstrap/Table";
 import { FaPlusCircle } from "react-icons/fa";
 import { FaCircleMinus } from "react-icons/fa6";
 import { qntyInc, qntyDec, itemRemove } from "../cartSlice";
+import { useNavigate } from "react-router-dom";
 const Cart = () => {
   const MyCart = useSelector((state) => state.mycart.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const qtyIncrement = (id) => {
     dispatch(qntyInc({ id: id }));
@@ -17,6 +19,10 @@ const Cart = () => {
 
   const removeItem = (id) => {
     dispatch(itemRemove({ id: id }));
+  };
+
+  const gotoCheckout = (tamount) => {
+    navigate(`/checkout/${tamount}`);
   };
 
   let totalAmount = 0;
@@ -108,6 +114,16 @@ const Cart = () => {
           </tr>
         </tbody>
       </Table>
+      <center>
+        <button
+          onClick={() => {
+            gotoCheckout(totalAmount);
+          }}
+        >
+          {" "}
+          Proceed to CheckOut
+        </button>
+      </center>
     </>
   );
 };

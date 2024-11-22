@@ -130,3 +130,10 @@ h1
 .footer-copyright {
   font-size: 14px;
 }
+#paydesign
+{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    margin: auto;
+}

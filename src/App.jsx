@@ -7,6 +7,9 @@ import WomenCollection from "./pages/WomenCollection";
 import KidsCollection from "./pages/KidsCollection";
 import Shop from "./pages/Shop";
 import ProductDetail from "./pages/ProductDetail";
+import CheckOut from "./pages/CheckOut";
+import PaymentDone from "./pages/PaymentDone";
+import ContactUs from "./pages/ContactUs";
 
 const App = () => {
   return (
@@ -21,7 +24,10 @@ const App = () => {
             <Route path="womenwear" element={<WomenCollection />} />
             <Route path="kidswear" element={<KidsCollection />} />
             <Route path="shop" element={<Shop />} />
+            <Route path="contact" element={<ContactUs />} />
             <Route path="prodetail/:id" element={<ProductDetail />} />
+            <Route path="checkout/:amt" element={<CheckOut />} />
+            <Route path="paydone" element={<PaymentDone />} />
           </Route>
         </Routes>
       </BrowserRouter>
